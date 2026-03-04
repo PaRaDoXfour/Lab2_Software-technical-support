@@ -55,47 +55,78 @@
         <!-- Логотип та навігація -->
         <nav aria-label="Головна навігація" role="navigation">
             <ul role="menubar">
-                <li role="none"><a role="menuitem" href="#about" aria-label="Перейти до розділу Про проект">Про
-                        проект</a></li>
-                <li role="none"><a role="menuitem" href="#features"
-                        aria-label="Перейти до розділу Можливості">Можливості</a></li>
-                <li role="none"><a role="menuitem" href="#technologies"
-                        aria-label="Перейти до розділу Технології">Технології</a></li>
+                <li role="none"><a role="menuitem" href="#relevance"
+                        aria-label="Перейти до розділу Актуальність">Актуальність</a></li>
+                <li role="none"><a role="menuitem" href="#goals" aria-label="Перейти до розділу Мета та завдання">Мета і
+                        завдання</a></li>
+                <li role="none"><a role="menuitem" href="#methodology"
+                        aria-label="Перейти до розділу Методологія">Методологія</a></li>
                 <li role="none"><a role="menuitem" href="#contacts" aria-label="Перейти до Контактів">Контакти</a></li>
             </ul>
         </nav>
 
-        <!-- Логотип університету / проекту (приклад зображення з alt-текстом) -->
-        <!-- <a href="/" aria-label="На головну">
-            <img src="/logo.svg" alt="Логотип Університету" width="150" height="50" loading="eager">
-        </a> -->
+        <!-- Логотип університету (СумДУ) -->
+        <a href="/" aria-label="На головну сторінку">
+            <!-- Placeholder логотипу СумДУ -->
+            <img src="https://sumdu.edu.ua/images/logo/sumdu-logo-ua.svg"
+                alt="Логотип Сумського державного університету (СумДУ)" width="150" height="50" loading="eager">
+        </a>
 
-        <h1 id="main-heading">Library Management System</h1>
-        <p aria-describedby="main-heading">Інформаційна система для управління бібліотекою</p>
+        <h1 id="main-heading">Інформаційна система управління бібліотекою з підтримкою медіаресурсів</h1>
+        <p aria-describedby="main-heading"><em>Information system for library management with support for media
+                resources</em></p>
     </header>
 
     <main role="main">
-        <!-- АРІА-зв'язки через aria-labelledby -->
-        <section id="about" aria-labelledby="heading-about">
-            <h2 id="heading-about">Про бакалаврську роботу</h2>
-            <p>Мета, завдання та актуальність розробки Library Management System.</p>
-            <!-- Приклад зображення для пояснення архітектури чи концепції -->
-            <!-- <img src="/architecture-diagram.jpg" alt="Діаграма архітектури бази даних системи управління бібліотекою" loading="lazy"> -->
+        <!-- Актуальність теми -->
+        <section id="relevance" aria-labelledby="heading-relevance">
+            <h2 id="heading-relevance">Актуальність теми</h2>
+            <p>
+                В епоху стрімкої <strong>цифровізації</strong> зберігання та обробка інформації у традиційних
+                бібліотеках стає рутинною та неефективною.
+                Впровадження сучасної <em>Інформаційної системи управління бібліотекою (Library Management System)</em>
+                дозволяє суттєво оптимізувати
+                процеси обліку, автоматизувати видачу та спростити каталогізацію не лише класичних друкованих видань,
+                але й <strong>цифрових медіаресурсів</strong>
+                (електронних книг, аудіо- та відеоматеріалів). Це забезпечує швидкий та зручний доступ студентів і
+                викладачів до необхідної бази знань.
+            </p>
         </section>
 
-        <section id="features" aria-labelledby="heading-features">
-            <h2 id="heading-features">Основні можливості</h2>
-            <p>Опис ключового функціоналу створеної системи та підтримуваних медіаресурсів.</p>
-            <!-- Приклад скріншоту додатку -->
-            <!-- <figure>
-                <img src="/app-screenshot.png" alt="Скріншот панелі адміністратора Library Management System" loading="lazy">
-                <figcaption>Панель адміністратора: керування книгами та користувачами</figcaption>
-            </figure> -->
+        <!-- Мета та завдання -->
+        <section id="goals" aria-labelledby="heading-goals">
+            <h2 id="heading-goals">Мета та завдання</h2>
+            <p><strong>Метою</strong> бакалаврської роботи є розробка комплексної інформаційної системи для
+                автоматизації процесів управління бібліотечним фондом та покращення клієнтського досвіду читачів.</p>
+            <h3>Основні завдання:</h3>
+            <ul>
+                <li><strong>1. Аналіз:</strong> Дослідження предметної області, існуючих аналогів та вимог до сучасних
+                    бібліотечних інформаційних систем.</li>
+                <li><strong>2. Проектування БД:</strong> Розробка решти реляційної схеми бази даних для надійного
+                    збереження інформації про користувачів, книги та медіаресурси.</li>
+                <li><strong>3. Пошукова підсистема:</strong> Реалізація ефективних алгоритмів пошуку за авторами,
+                    категоріями, тегами та ключовими словами.</li>
+                <li><strong>4. Розробка модулів:</strong> Створення та впровадження модуля адміністратора (управління
+                    фондом) та модуля читача (перегляд, електронне бронювання).</li>
+                <li><strong>5. Тестування:</strong> Проведення комплексного модульного та інтеграційного тестування
+                    функціоналу для забезпечення безпеки і стабільності роботи системи.</li>
+            </ul>
         </section>
 
-        <section id="technologies" aria-labelledby="heading-technologies">
-            <h2 id="heading-technologies">Використані технології</h2>
-            <p>Стек технологій, за допомогою яких було розроблено проект.</p>
+        <!-- Методологія -->
+        <section id="methodology" aria-labelledby="heading-methodology">
+            <h2 id="heading-methodology">Методологія та стек технологій</h2>
+            <p>Проєкт реалізується на основі сучасних веб-технологій з використанням архітектури клієнт-сервер:</p>
+            <ul>
+                <li><strong>Frontend (Клієнтська частина):</strong> <em>React.js</em> для створення динамічного та
+                    адаптивного інтерфейсу користувача (SPA) з використанням компонентного підходу.</li>
+                <li><strong>Backend (Серверна частина):</strong> <em>Node.js</em> із фреймворком <em>Express.js</em> для
+                    побудови швидкого обо масштабованого RESTful API.</li>
+                <li><strong>База даних:</strong> <em>PostgreSQL</em> для структурованого та захищеного зберігання
+                    інформації бібліотеки.</li>
+                <li><strong>Додаткові інструменти:</strong> <em>JWT</em> для безпечної аутентифікації користувачів та
+                    <em>Git</em> для контролю версій.</li>
+            </ul>
         </section>
     </main>
 
@@ -105,6 +136,7 @@
             <address>
                 <p>Розробник: <strong>[Ім'я Студента]</strong></p>
                 <p>Керівник: <strong>[Ім'я Керівника]</strong></p>
+                <p>Навчальний заклад: <strong>Сумський державний університет (СумДУ)</strong></p>
                 <p>
                     <a href="https://github.com/PaRaDoXfour/Lab2_Software-technical-support" target="_blank"
                         rel="noopener noreferrer" aria-label="Відкрити репозиторій проекту на GitHub у новій вкладці">
@@ -113,7 +145,7 @@
                 </p>
             </address>
         </section>
-        <p>&copy; <time datetime="2026">2026</time> Library Management System. Всі права захищені.</p>
+        <p>&copy; <time datetime="2026">2026</time> Інформаційна система управління бібліотекою. Всі права захищені.</p>
     </footer>
 </body>
 
