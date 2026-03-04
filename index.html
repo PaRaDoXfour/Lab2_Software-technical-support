@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -8,27 +8,66 @@
     <meta name="description"
         content="Лендінг бакалаврської роботи на тему: Інформаційна система для управління бібліотекою (Library Management System).">
 
-    <!-- Open Graph Tags для соцмереж -->
+    <!-- Open Graph Tags -->
     <meta property="og:title" content="Library Management System - Бакалаврська робота">
     <meta property="og:description"
-        content="Інформаційна система для управління бібліотекою з підтримкою різних типів медіаресурсів.">
+        content="Інформаційна система управління бібліотекою з підтримкою різних типів медіаресурсів.">
     <meta property="og:image" content="https://example.com/og-image.jpg">
-    <!-- Для og:image бажано використовувати абсолютний URL до репрезентативного зображення 1200x630px -->
     <meta property="og:url" content="https://example.com/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="uk_UA">
 
-    <!-- CSS Reset -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-
-    <!-- Фавіконки -->
+    <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Schema.org JSON-LD мікророзмітка -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sumduBlue: '#00529B',
+                        sumduBlueDark: '#003a6c',
+                        sumduYellow: '#FFCA08',
+                        sumduYellowDark: '#dcae06',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .hidden-lang {
+                display: none !important;
+            }
+            .section-title {
+                @apply text-3xl font-bold text-sumduBlue mb-8 flex items-center gap-3 relative;
+            }
+            .section-title::after {
+                content: '';
+                @apply absolute -bottom-3 left-0 w-16 h-1 bg-sumduYellow rounded-full;
+            }
+        }
+        
+        html {
+            scroll-padding-top: 5rem;
+        }
+    </style>
+
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -38,114 +77,443 @@
         "@type": "Person",
         "name": "[Ім'я Студента]"
       },
-      "contributor": {
-        "@type": "Person",
-        "name": "[Ім'я Керівника]",
-        "jobTitle": "Науковий керівник"
-      },
       "genre": "Бакалаврська робота (Academic Project)",
       "description": "Лендінг бакалаврської роботи на тему розробки інформаційної системи для управління бібліотекою.",
       "inLanguage": "uk"
     }
     </script>
+
+    <!-- Language Switcher Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnUA = document.getElementById('lang-ua');
+            const btnEN = document.getElementById('lang-en');
+
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+
+                document.querySelectorAll('[data-lang]').forEach(el => {
+                    if (el.dataset.lang === lang) {
+                        el.classList.remove('hidden-lang');
+                    } else {
+                        el.classList.add('hidden-lang');
+                    }
+                });
+
+                if (lang === 'uk') {
+                    btnUA.classList.add('bg-sumduYellow', 'font-bold', 'text-sumduBlueDark');
+                    btnUA.classList.remove('text-gray-500', 'hover:bg-gray-100');
+                    btnEN.classList.remove('bg-sumduYellow', 'font-bold', 'text-sumduBlueDark');
+                    btnEN.classList.add('text-gray-500', 'hover:bg-gray-100');
+                } else {
+                    btnEN.classList.add('bg-sumduYellow', 'font-bold', 'text-sumduBlueDark');
+                    btnEN.classList.remove('text-gray-500', 'hover:bg-gray-100');
+                    btnUA.classList.remove('bg-sumduYellow', 'font-bold', 'text-sumduBlueDark');
+                    btnUA.classList.add('text-gray-500', 'hover:bg-gray-100');
+                }
+            }
+
+            btnUA.addEventListener('click', () => setLanguage('uk'));
+            btnEN.addEventListener('click', () => setLanguage('en'));
+
+            // Set initial language
+            setLanguage('uk');
+        });
+    </script>
 </head>
 
-<body>
-    <header role="banner">
-        <!-- Логотип та навігація -->
-        <nav aria-label="Головна навігація" role="navigation">
-            <ul role="menubar">
-                <li role="none"><a role="menuitem" href="#relevance"
-                        aria-label="Перейти до розділу Актуальність">Актуальність</a></li>
-                <li role="none"><a role="menuitem" href="#goals" aria-label="Перейти до розділу Мета та завдання">Мета і
-                        завдання</a></li>
-                <li role="none"><a role="menuitem" href="#methodology"
-                        aria-label="Перейти до розділу Методологія">Методологія</a></li>
-                <li role="none"><a role="menuitem" href="#contacts" aria-label="Перейти до Контактів">Контакти</a></li>
-            </ul>
-        </nav>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed flex flex-col min-h-screen">
 
-        <!-- Логотип університету (СумДУ) -->
-        <a href="/" aria-label="На головну сторінку">
-            <!-- Placeholder логотипу СумДУ -->
-            <img src="https://sumdu.edu.ua/images/logo/sumdu-logo-ua.svg"
-                alt="Логотип Сумського державного університету (СумДУ)" width="150" height="50" loading="eager">
-        </a>
+    <!-- Header Navigation -->
+    <header role="banner" class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200">
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
 
-        <h1 id="main-heading">Інформаційна система управління бібліотекою з підтримкою медіаресурсів</h1>
-        <p aria-describedby="main-heading"><em>Information system for library management with support for media
-                resources</em></p>
+            <a href="#" aria-label="На головну сторінку"
+                class="flex-shrink-0 transition-transform hover:scale-105 flex items-center gap-3">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/СумДУ.png/1280px-СумДУ.png"
+                    alt="Логотип СумДУ" class="h-10 w-auto" loading="eager">
+                <div
+                    class="hidden sm:block text-sm font-bold text-sumduBlueDark leading-tight border-l-2 border-sumduYellow pl-3">
+                    <span data-lang="uk">Сумський<br>державний університет</span>
+                    <span data-lang="en">Sumy State<br>University</span>
+                </div>
+                <div class="sm:hidden text-lg font-bold text-sumduBlueDark">
+                    <span data-lang="uk">СумДУ</span>
+                    <span data-lang="en">SumDU</span>
+                </div>
+            </a>
+
+            <nav aria-label="Головна навігація" role="navigation" class="w-full sm:w-auto">
+                <ul role="menubar"
+                    class="flex flex-wrap justify-center sm:justify-end gap-x-6 gap-y-2 text-sm font-medium text-gray-600">
+                    <li role="none"><a role="menuitem" href="#relevance"
+                            class="hover:text-sumduBlue transition-colors"><span data-lang="uk">Актуальність</span><span
+                                data-lang="en">Relevance</span></a></li>
+                    <li role="none"><a role="menuitem" href="#goals"
+                            class="hover:text-sumduBlue transition-colors"><span data-lang="uk">Мета і
+                                завдання</span><span data-lang="en">Goals & Tasks</span></a></li>
+                    <li role="none"><a role="menuitem" href="#results"
+                            class="hover:text-sumduBlue transition-colors"><span data-lang="uk">Результати</span><span
+                                data-lang="en">Results</span></a></li>
+                    <li role="none"><a role="menuitem" href="#methodology"
+                            class="hover:text-sumduBlue transition-colors"><span data-lang="uk">Методологія</span><span
+                                data-lang="en">Methodology</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- Language Switcher -->
+            <div class="flex bg-gray-100 rounded-lg p-1 border border-gray-200"
+                aria-label="Вибір мови / Language selection">
+                <button id="lang-ua" class="px-3 py-1 rounded-md text-xs transition-all duration-200"
+                    aria-label="Українська">UA</button>
+                <button id="lang-en" class="px-3 py-1 rounded-md text-xs transition-all duration-200"
+                    aria-label="English">EN</button>
+            </div>
+        </div>
     </header>
 
-    <main role="main">
-        <!-- Актуальність теми -->
-        <section id="relevance" aria-labelledby="heading-relevance">
-            <h2 id="heading-relevance">Актуальність теми</h2>
-            <p>
-                В епоху стрімкої <strong>цифровізації</strong> зберігання та обробка інформації у традиційних
-                бібліотеках стає рутинною та неефективною.
-                Впровадження сучасної <em>Інформаційної системи управління бібліотекою (Library Management System)</em>
-                дозволяє суттєво оптимізувати
-                процеси обліку, автоматизувати видачу та спростити каталогізацію не лише класичних друкованих видань,
-                але й <strong>цифрових медіаресурсів</strong>
-                (електронних книг, аудіо- та відеоматеріалів). Це забезпечує швидкий та зручний доступ студентів і
-                викладачів до необхідної бази знань.
-            </p>
+    <main role="main" class="flex-grow">
+
+        <!-- Hero Section -->
+        <section
+            class="bg-gradient-to-br from-sumduBlue to-sumduBlueDark text-white py-16 sm:py-24 px-4 relative overflow-hidden">
+            <!-- Background decorative shape -->
+            <div
+                class="absolute -top-24 -right-24 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl mix-blend-overlay">
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-sumduYellow text-sumduBlueDark text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
+                    <span data-lang="uk">Бакалаврська робота</span><span data-lang="en">Bachelor's Thesis</span>
+                </span>
+
+                <h1 id="main-heading" class="text-4xl sm:text-5xl font-bold mb-6 leading-tight drop-shadow-md">
+                    <span data-lang="uk">Інформаційна система управління бібліотекою <br class="hidden sm:block"> з
+                        підтримкою медіаресурсів</span>
+                    <span data-lang="en">Information System for Library Management <br class="hidden sm:block"> with
+                        Media Resources Support</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto font-light">
+                    <span data-lang="uk">Кваліфікаційний проєкт факультету ЕлІТ Сумського державного
+                        університету.</span>
+                    <span data-lang="en">Qualifying project of the ElIT faculty, Sumy State University.</span>
+                </p>
+
+                <div class="mt-10">
+                    <a href="#goals"
+                        class="inline-flex items-center gap-2 bg-sumduYellow text-sumduBlue px-6 py-3 rounded-lg font-semibold hover:bg-white transition-colors duration-300 shadow-lg">
+                        <span data-lang="uk">Дізнатися більше</span><span data-lang="en">Learn More</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </section>
 
-        <!-- Мета та завдання -->
-        <section id="goals" aria-labelledby="heading-goals">
-            <h2 id="heading-goals">Мета та завдання</h2>
-            <p><strong>Метою</strong> бакалаврської роботи є розробка комплексної інформаційної системи для
-                автоматизації процесів управління бібліотечним фондом та покращення клієнтського досвіду читачів.</p>
-            <h3>Основні завдання:</h3>
-            <ul>
-                <li><strong>1. Аналіз:</strong> Дослідження предметної області, існуючих аналогів та вимог до сучасних
-                    бібліотечних інформаційних систем.</li>
-                <li><strong>2. Проектування БД:</strong> Розробка решти реляційної схеми бази даних для надійного
-                    збереження інформації про користувачів, книги та медіаресурси.</li>
-                <li><strong>3. Пошукова підсистема:</strong> Реалізація ефективних алгоритмів пошуку за авторами,
-                    категоріями, тегами та ключовими словами.</li>
-                <li><strong>4. Розробка модулів:</strong> Створення та впровадження модуля адміністратора (управління
-                    фондом) та модуля читача (перегляд, електронне бронювання).</li>
-                <li><strong>5. Тестування:</strong> Проведення комплексного модульного та інтеграційного тестування
-                    функціоналу для забезпечення безпеки і стабільності роботи системи.</li>
-            </ul>
-        </section>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
 
-        <!-- Методологія -->
-        <section id="methodology" aria-labelledby="heading-methodology">
-            <h2 id="heading-methodology">Методологія та стек технологій</h2>
-            <p>Проєкт реалізується на основі сучасних веб-технологій з використанням архітектури клієнт-сервер:</p>
-            <ul>
-                <li><strong>Frontend (Клієнтська частина):</strong> <em>React.js</em> для створення динамічного та
-                    адаптивного інтерфейсу користувача (SPA) з використанням компонентного підходу.</li>
-                <li><strong>Backend (Серверна частина):</strong> <em>Node.js</em> із фреймворком <em>Express.js</em> для
-                    побудови швидкого обо масштабованого RESTful API.</li>
-                <li><strong>База даних:</strong> <em>PostgreSQL</em> для структурованого та захищеного зберігання
-                    інформації бібліотеки.</li>
-                <li><strong>Додаткові інструменти:</strong> <em>JWT</em> для безпечної аутентифікації користувачів та
-                    <em>Git</em> для контролю версій.</li>
-            </ul>
-        </section>
+            <!-- Актуальність теми -->
+            <section id="relevance" aria-labelledby="heading-relevance"
+                class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 sm:p-12 hover:shadow-md transition-shadow">
+                <h2 id="heading-relevance" class="section-title">
+                    <span data-lang="uk">Актуальність теми</span><span data-lang="en">Relevance of the Topic</span>
+                </h2>
+                <div class="prose prose-lg text-gray-600 max-w-none">
+                    <p data-lang="uk">
+                        В епоху стрімкої <strong>цифровізації</strong> зберігання та обробка інформації у традиційних
+                        бібліотеках стає рутинною та неефективною.
+                        Впровадження сучасної <em>Інформаційної системи управління бібліотекою (Library Management
+                            System)</em> дозволяє суттєво оптимізувати
+                        процеси обліку, автоматизувати видачу та спростити каталогізацію не лише класичних друкованих
+                        видань, але й <strong class="text-sumduBlue">цифрових медіаресурсів</strong>
+                        (електронних книг, аудіо- та відеоматеріалів). Це забезпечує швидкий та зручний доступ студентів
+                        і викладачів до необхідної бази знань.
+                    </p>
+                    <p data-lang="en">
+                        In the era of rapid <strong>digitalization</strong>, storing and processing information in
+                        traditional libraries becomes routine and inefficient.
+                        The implementation of a modern <em>Library Management System</em> allows to significantly
+                        optimize
+                        accounting processes, automate loaning, and simplify cataloging not only for classic printed
+                        publications, but also for <strong class="text-sumduBlue">digital media resources</strong>
+                        (e-books, audio, and video materials). This ensures fast and convenient access for students and
+                        teachers to the required knowledge base.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Мета та завдання -->
+            <section id="goals" aria-labelledby="heading-goals">
+                <h2 id="heading-goals" class="section-title">
+                    <span data-lang="uk">Мета та завдання</span><span data-lang="en">Goals and Tasks</span>
+                </h2>
+                <div class="bg-blue-50 border-l-4 border-sumduBlue p-6 rounded-r-lg mb-12">
+                    <p class="text-lg text-gray-700" data-lang="uk">
+                        <strong>Метою</strong> бакалаврської роботи є розробка комплексної інформаційної системи для
+                        автоматизації процесів управління бібліотечним фондом та покращення клієнтського досвіду
+                        читачів.
+                    </p>
+                    <p class="text-lg text-gray-700" data-lang="en">
+                        The <strong>goal</strong> of the bachelor's thesis is to develop a comprehensive information
+                        system to automate the processes of managing the library fund and improving the reader's
+                        customer experience.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Завдання 1 -->
+                    <div
+                        class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-blue-100 text-sumduBlue rounded-lg flex items-center justify-center mb-4 group-hover:bg-sumduBlue group-hover:text-white transition-colors">
+                            <span class="text-xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800"><span data-lang="uk">Аналіз</span><span
+                                data-lang="en">Analysis</span></h3>
+                        <p class="text-gray-600 text-sm">
+                            <span data-lang="uk">Дослідження предметної області, існуючих аналогів та вимог до сучасних
+                                бібліотечних інформаційних систем.</span>
+                            <span data-lang="en">Research of the domain, existing analogs, and requirements for modern
+                                library information systems.</span>
+                        </p>
+                    </div>
+
+                    <!-- Завдання 2 -->
+                    <div
+                        class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-blue-100 text-sumduBlue rounded-lg flex items-center justify-center mb-4 group-hover:bg-sumduBlue group-hover:text-white transition-colors">
+                            <span class="text-xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800"><span data-lang="uk">Проектування
+                                БД</span><span data-lang="en">DB Design</span></h3>
+                        <p class="text-gray-600 text-sm">
+                            <span data-lang="uk">Розробка надійної реляційної схеми бази даних для збереження інформації
+                                про користувачів, книги та медіаресурси.</span>
+                            <span data-lang="en">Development of a reliable relational database schema to store
+                                information about users, books, and media resources.</span>
+                        </p>
+                    </div>
+
+                    <!-- Завдання 3 -->
+                    <div
+                        class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-blue-100 text-sumduBlue rounded-lg flex items-center justify-center mb-4 group-hover:bg-sumduBlue group-hover:text-white transition-colors">
+                            <span class="text-xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800"><span data-lang="uk">Пошукова
+                                підсистема</span><span data-lang="en">Search Subsystem</span></h3>
+                        <p class="text-gray-600 text-sm">
+                            <span data-lang="uk">Реалізація ефективних алгоритмів пошуку за авторами, категоріями,
+                                тегами та ключовими словами.</span>
+                            <span data-lang="en">Implementation of efficient search algorithms by authors, categories,
+                                tags, and keywords.</span>
+                        </p>
+                    </div>
+
+                    <!-- Завдання 4 -->
+                    <div
+                        class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-blue-100 text-sumduBlue rounded-lg flex items-center justify-center mb-4 group-hover:bg-sumduBlue group-hover:text-white transition-colors">
+                            <span class="text-xl font-bold">4</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800"><span data-lang="uk">Розробка
+                                модулів</span><span data-lang="en">Module Development</span></h3>
+                        <p class="text-gray-600 text-sm">
+                            <span data-lang="uk">Створення модуля адміністратора (управління фондом) та модуля читача
+                                (перегляд, електронне бронювання).</span>
+                            <span data-lang="en">Creation of the administrator module (fund management) and the reader
+                                module (viewing, e-booking).</span>
+                        </p>
+                    </div>
+
+                    <!-- Завдання 5 -->
+                    <div
+                        class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-blue-100 text-sumduBlue rounded-lg flex items-center justify-center mb-4 group-hover:bg-sumduBlue group-hover:text-white transition-colors">
+                            <span class="text-xl font-bold">5</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800"><span data-lang="uk">Тестування</span><span
+                                data-lang="en">Testing</span></h3>
+                        <p class="text-gray-600 text-sm">
+                            <span data-lang="uk">Проведення комплексного модульного та інтеграційного тестування
+                                функціоналу для забезпечення безпеки і стабільності роботи системи.</span>
+                            <span data-lang="en">Conducting comprehensive unit and integration testing of functionality
+                                to ensure the security and stability of the system.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Очікувані результати -->
+            <section id="results" aria-labelledby="heading-results">
+                <h2 id="heading-results" class="section-title">
+                    <span data-lang="uk">Очікувані результати</span><span data-lang="en">Expected Results</span>
+                </h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <!-- Icon block 1 -->
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center border border-blue-100">
+                            <svg class="w-6 h-6 text-sumduBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-1"><span data-lang="uk">Зменшення часу
+                                    обслуговування</span><span data-lang="en">Reduced Service Time</span></h3>
+                            <p class="text-gray-600 text-sm"><span data-lang="uk">Автоматизація процесів дозволить
+                                    скоротити час видачі та приймання літератури до 40%.</span><span
+                                    data-lang="en">Process automation will reduce literature issuing and receiving time
+                                    by up to 40%.</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Icon block 2 -->
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-full bg-yellow-50 flex items-center justify-center border border-yellow-100">
+                            <svg class="w-6 h-6 text-sumduYellowDark" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-1"><span data-lang="uk">Єдиний центр
+                                    управління</span><span data-lang="en">Unified Management Center</span></h3>
+                            <p class="text-gray-600 text-sm"><span data-lang="uk">Глобалізований доступ до друкованих і
+                                    цифрових медіаресурсів з одного інтерфейсу.</span><span data-lang="en">Globalized
+                                    access to printed and digital media resources from a single interface.</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Icon block 3 -->
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-full bg-green-50 flex items-center justify-center border border-green-100">
+                            <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-1"><span data-lang="uk">Підвищення безпеки
+                                    даних</span><span data-lang="en">Enhanced Data Security</span></h3>
+                            <p class="text-gray-600 text-sm"><span data-lang="uk">Впровадження JWT-аутентифікації та
+                                    розмежування ролей збереже дані від несанкціонованого доступу.</span><span
+                                    data-lang="en">Implementation of JWT authentication and role segregation will
+                                    protect data from unauthorized access.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Методологія -->
+            <section id="methodology" aria-labelledby="heading-methodology"
+                class="bg-gray-900 text-white rounded-2xl p-8 sm:p-12 shadow-md">
+                <h2 id="heading-methodology"
+                    class="text-3xl font-bold mb-8 flex items-center gap-3 relative text-white">
+                    <span data-lang="uk">Методологія та стек технологій</span><span data-lang="en">Methodology and Tech
+                        Stack</span>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gray-800 p-5 rounded-xl border border-gray-700">
+                        <div class="text-sumduYellow mb-2 font-bold text-lg">Frontend</div>
+                        <p class="text-gray-300 text-sm"><span data-lang="uk"><em>React.js</em> для створення
+                                динамічного та адаптивного інтерфейсу користувача (SPA) з використанням компонентного
+                                підходу.</span><span data-lang="en"><em>React.js</em> for creating a dynamic and
+                                responsive user interface (SPA) using a component approach.</span></p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-xl border border-gray-700">
+                        <div class="text-sumduYellow mb-2 font-bold text-lg">Backend</div>
+                        <p class="text-gray-300 text-sm"><span data-lang="uk"><em>Node.js</em> із фреймворком
+                                <em>Express.js</em> для побудови швидкого та масштабованого RESTful API.</span><span
+                                data-lang="en"><em>Node.js</em> with the <em>Express.js</em> framework for building a
+                                fast and scalable RESTful API.</span></p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-xl border border-gray-700">
+                        <div class="text-sumduYellow mb-2 font-bold text-lg">Database</div>
+                        <p class="text-gray-300 text-sm"><span data-lang="uk"><em>PostgreSQL</em> для структурованого та
+                                захищеного зберігання об'ємної інформації бібліотеки.</span><span
+                                data-lang="en"><em>PostgreSQL</em> for structured and secure storage of voluminous
+                                library information.</span></p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-xl border border-gray-700">
+                        <div class="text-sumduYellow mb-2 font-bold text-lg">Tools</div>
+                        <p class="text-gray-300 text-sm"><span data-lang="uk"><em>JWT</em> для безпечної аутентифікації
+                                користувачів, та <em>Git</em> для контролю версій і командної роботи.</span><span
+                                data-lang="en"><em>JWT</em> for secure user authentication, and <em>Git</em> for version
+                                control and teamwork.</span></p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <footer role="contentinfo">
-        <section id="contacts" aria-labelledby="heading-contacts">
-            <h2 id="heading-contacts">Контакти та посилання</h2>
-            <address>
-                <p>Розробник: <strong>[Ім'я Студента]</strong></p>
-                <p>Керівник: <strong>[Ім'я Керівника]</strong></p>
-                <p>Навчальний заклад: <strong>Сумський державний університет (СумДУ)</strong></p>
-                <p>
-                    <a href="https://github.com/PaRaDoXfour/Lab2_Software-technical-support" target="_blank"
-                        rel="noopener noreferrer" aria-label="Відкрити репозиторій проекту на GitHub у новій вкладці">
-                        Посилання на репозиторій (GitHub)
-                    </a>
-                </p>
-            </address>
-        </section>
-        <p>&copy; <time datetime="2026">2026</time> Інформаційна система управління бібліотекою. Всі права захищені.</p>
+    <!-- Footer -->
+    <footer role="contentinfo" class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+
+                <div class="text-center md:text-left">
+                    <img src="https://sumdu.edu.ua/images/logo/sumdu-logo-ua.svg" alt="Логотип СумДУ"
+                        class="h-8 mx-auto md:mx-0 mb-4 opacity-80" loading="lazy">
+                    <p class="text-sm text-gray-500 max-w-xs">
+                        <span data-lang="uk">Кафедра комп'ютерних наук, факультет Електроніки та інформаційних
+                            технологій (ЕлІТ).</span>
+                        <span data-lang="en">Department of Computer Science, Faculty of Electronics and Information
+                            Technologies.</span>
+                    </p>
+                </div>
+
+                <section id="contacts" aria-labelledby="heading-contacts" class="text-center md:text-right">
+                    <h2 id="heading-contacts" class="sr-only">Контакти</h2>
+                    <address class="not-italic space-y-2 text-sm text-gray-600">
+                        <p><span class="text-gray-400"><span data-lang="uk">Розробник:</span><span
+                                    data-lang="en">Developer:</span></span> <strong class="text-gray-800">Kostian
+                                Oleh</strong></p>
+                        <p><span class="text-gray-400"><span data-lang="uk">Керівник:</span><span
+                                    data-lang="en">Supervisor:</span></span> <strong class="text-gray-800">Korobov
+                                Artem</strong></p>
+                        <div class="pt-2">
+                            <a href="https://github.com/PaRaDoXfour/Lab2_Software-technical-support" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1 text-sumduBlue hover:text-sumduBlueDark hover:underline font-medium transition-colors"
+                                aria-label="Відкрити репозиторій проекту на GitHub у новій вкладці">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span>GitHub Repository</span>
+                            </a>
+                        </div>
+                    </address>
+                </section>
+            </div>
+
+            <div
+                class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+                <p>&copy; <time datetime="2026">2026</time> <span data-lang="uk">Інформаційна система управління
+                        бібліотекою. Всі права захищені.</span><span data-lang="en">Library Management System. All
+                        rights reserved.</span></p>
+                <p><span data-lang="uk">Створено для бакалаврської роботи</span><span data-lang="en">Created for a
+                        Bachelor's thesis</span></p>
+            </div>
+        </div>
     </footer>
 </body>
 
