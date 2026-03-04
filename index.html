@@ -1,60 +1,120 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System - Бакалаврська робота</title>
-    <meta name="description" content="Лендінг бакалаврської роботи на тему: Інформаційна система для управління бібліотекою (Library Management System).">
-    
-    <!-- CSS Reset (normalize.css через CDN) -->
+    <meta name="description"
+        content="Лендінг бакалаврської роботи на тему: Інформаційна система для управління бібліотекою (Library Management System).">
+
+    <!-- Open Graph Tags для соцмереж -->
+    <meta property="og:title" content="Library Management System - Бакалаврська робота">
+    <meta property="og:description"
+        content="Інформаційна система для управління бібліотекою з підтримкою різних типів медіаресурсів.">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <!-- Для og:image бажано використовувати абсолютний URL до репрезентативного зображення 1200x630px -->
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="uk_UA">
+
+    <!-- CSS Reset -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    
-    <!-- Фавіконки різних розмірів -->
+
+    <!-- Фавіконки -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Schema.org JSON-LD мікророзмітка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Library Management System: Інформаційна система для управління бібліотекою",
+      "author": {
+        "@type": "Person",
+        "name": "[Ім'я Студента]"
+      },
+      "contributor": {
+        "@type": "Person",
+        "name": "[Ім'я Керівника]",
+        "jobTitle": "Науковий керівник"
+      },
+      "genre": "Бакалаврська робота (Academic Project)",
+      "description": "Лендінг бакалаврської роботи на тему розробки інформаційної системи для управління бібліотекою.",
+      "inLanguage": "uk"
+    }
+    </script>
 </head>
+
 <body>
-    <header>
+    <header role="banner">
         <!-- Логотип та навігація -->
-        <nav>
-            <ul>
-                <li><a href="#about">Про проект</a></li>
-                <li><a href="#features">Можливості</a></li>
-                <li><a href="#contacts">Контакти</a></li>
+        <nav aria-label="Головна навігація" role="navigation">
+            <ul role="menubar">
+                <li role="none"><a role="menuitem" href="#about" aria-label="Перейти до розділу Про проект">Про
+                        проект</a></li>
+                <li role="none"><a role="menuitem" href="#features"
+                        aria-label="Перейти до розділу Можливості">Можливості</a></li>
+                <li role="none"><a role="menuitem" href="#technologies"
+                        aria-label="Перейти до розділу Технології">Технології</a></li>
+                <li role="none"><a role="menuitem" href="#contacts" aria-label="Перейти до Контактів">Контакти</a></li>
             </ul>
         </nav>
-        <h1>Library Management System</h1>
-        <p>Інформаційна система для управління бібліотекою</p>
+
+        <!-- Логотип університету / проекту (приклад зображення з alt-текстом) -->
+        <!-- <a href="/" aria-label="На головну">
+            <img src="/logo.svg" alt="Логотип Університету" width="150" height="50" loading="eager">
+        </a> -->
+
+        <h1 id="main-heading">Library Management System</h1>
+        <p aria-describedby="main-heading">Інформаційна система для управління бібліотекою</p>
     </header>
 
-    <main>
-        <section id="about">
-            <h2>Про бакалаврську роботу</h2>
+    <main role="main">
+        <!-- АРІА-зв'язки через aria-labelledby -->
+        <section id="about" aria-labelledby="heading-about">
+            <h2 id="heading-about">Про бакалаврську роботу</h2>
             <p>Мета, завдання та актуальність розробки Library Management System.</p>
+            <!-- Приклад зображення для пояснення архітектури чи концепції -->
+            <!-- <img src="/architecture-diagram.jpg" alt="Діаграма архітектури бази даних системи управління бібліотекою" loading="lazy"> -->
         </section>
 
-        <section id="features">
-            <h2>Основні можливості</h2>
+        <section id="features" aria-labelledby="heading-features">
+            <h2 id="heading-features">Основні можливості</h2>
             <p>Опис ключового функціоналу створеної системи та підтримуваних медіаресурсів.</p>
+            <!-- Приклад скріншоту додатку -->
+            <!-- <figure>
+                <img src="/app-screenshot.png" alt="Скріншот панелі адміністратора Library Management System" loading="lazy">
+                <figcaption>Панель адміністратора: керування книгами та користувачами</figcaption>
+            </figure> -->
         </section>
 
-        <section id="technologies">
-            <h2>Використані технології</h2>
+        <section id="technologies" aria-labelledby="heading-technologies">
+            <h2 id="heading-technologies">Використані технології</h2>
             <p>Стек технологій, за допомогою яких було розроблено проект.</p>
         </section>
     </main>
 
-    <footer>
-        <section id="contacts">
-            <h2>Контакти та посилання</h2>
-            <p>Розробник: [Ім'я Студента]</p>
-            <p>Керівник: [Ім'я Керівника]</p>
-            <p><a href="https://github.com/your-repo">Посилання на репозиторій (GitHub)</a></p>
+    <footer role="contentinfo">
+        <section id="contacts" aria-labelledby="heading-contacts">
+            <h2 id="heading-contacts">Контакти та посилання</h2>
+            <address>
+                <p>Розробник: <strong>[Ім'я Студента]</strong></p>
+                <p>Керівник: <strong>[Ім'я Керівника]</strong></p>
+                <p>
+                    <a href="https://github.com/PaRaDoXfour/Lab2_Software-technical-support" target="_blank"
+                        rel="noopener noreferrer" aria-label="Відкрити репозиторій проекту на GitHub у новій вкладці">
+                        Посилання на репозиторій (GitHub)
+                    </a>
+                </p>
+            </address>
         </section>
-        <p>&copy; 2026 Library Management System. Всі права захищені.</p>
+        <p>&copy; <time datetime="2026">2026</time> Library Management System. Всі права захищені.</p>
     </footer>
 </body>
+
 </html>
